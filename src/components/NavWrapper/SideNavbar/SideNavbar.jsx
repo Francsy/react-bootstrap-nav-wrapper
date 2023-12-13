@@ -5,9 +5,9 @@ import "./SideNavbar.css";
 
 const SideNavbar = ({ isOpen }) => {
   return (
-    <aside className={isOpen ? "show" : "hide"} >
-    <Navbar bg="light" expand="lg"  >
-        <Nav className="flex-column">
+    <aside className={`${isOpen ? "show" : "hide"} `}>
+    <Navbar bg="light" expand="lg" className="side-menu d-flex  align-items-start"  >
+        <Nav className="p-3 flex-column">
           <Nav.Link href="#home">Inicio</Nav.Link>
           <Nav.Link href="#link1">Enlace 1</Nav.Link>
           <Nav.Link href="#link2">Enlace 2</Nav.Link>

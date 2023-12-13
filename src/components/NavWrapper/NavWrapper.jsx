@@ -2,16 +2,22 @@ import React, { useState, useEffect } from 'react';
 import TopNavbar from "./TopNavbar";
 import SideNavbar from "./SideNavbar";
 
+import './NavWrapper.css';
+
 const SidebarWrapper = ({ children }) => {
   const [isMobile, setIsMobile] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // Inicialmente cerrado en móviles
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [topMenuHeight, setTopMenuHeight] = useState(0);
+  const [sideMenuWidth, setSideMenuWidth] = useState(0);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
     const handleMediaQueryChange = (e) => {
       setIsMobile(e.matches);
       if (e.matches) {
-        setSidebarOpen(false); // Cierra el sidebar cuando cambia a vista móvil
+        setSidebarOpen(false);
+      } else {
+        setSidebarOpen(true);
       }
     };
 
@@ -23,20 +29,37 @@ const SidebarWrapper = ({ children }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const topMenu = document.querySelector('.top-menu');
+    const sideMenu = document.querySelector('.side-menu');
+
+    if (topMenu && sideMenu) {
+      const topMenuHeight = topMenu.clientHeight;
+      const sideMenuWidth = sideMenu.clientWidth;
+
+      setTopMenuHeight(topMenuHeight);
+      setSideMenuWidth(sideMenuWidth);
+    }
+  }, []);
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+
   return (
-    <div style={{ display: 'flex' }}>
-    <SideNavbar isOpen={sidebarOpen} />
-    <div style={{ flex: 1 }}>
-      <TopNavbar isMobile={isMobile} toggleSidebar={toggleSidebar} />
-      <div style={{ padding: '20px' }}>{children}</div>
+    <div>
+      <div className='position-fixed parent-menu'>
+        <TopNavbar isMobile={isMobile} toggleSidebar={toggleSidebar} />
+        <SideNavbar isOpen={sidebarOpen} />
+      </div>
+      <div className="p-4 content" style={{
+        marginTop: `${topMenuHeight}px`,
+        marginLeft: isMobile ? '0px' : `${sideMenuWidth}px`,
+      }}>
+        {children}
+      </div>
     </div>
-  </div>
-
-
   );
 };
 

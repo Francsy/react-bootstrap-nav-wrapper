@@ -1,18 +1,14 @@
 import React from "react";
 import { Navbar, Button, Container } from 'react-bootstrap';
 
+import './TopNavbar.css';
+
 const TopNavbar = ({ isMobile, toggleSidebar }) => {
   return (
-    <header>
-      <Navbar expand="lg" className="bg-body-tertiary fixed-top">
+    <header className="fixed-top">
+      <Navbar expand="lg" className="bg-body-tertiary top-menu" >
         <Container fluid>
-          {isMobile && <Navbar.Toggle onClick={toggleSidebar} /> }
-          
-        {/*  (<Button className="boton" onClick={toggleSidebar}>
-              <div className="burguer-line" style={{ width: '35px', height: '5px', backgroundColor: 'black', margin: '6px 0', }}></div>
-              <div className="burguer-line" style={{ width: '35px', height: '5px', backgroundColor: 'black', margin: '6px 0', }}></div>
-              <div className="burguer-line" style={{ width: '35px', height: '5px', backgroundColor: 'black', margin: '6px 0', }}></div>
-            </Button>)  */}
+          {isMobile && <Navbar.Toggle onClick={toggleSidebar} />}
           <Navbar.Brand href="#home">
             <img
               src="https://www.francsy.dev/assets/logo-4e70be36.svg"
@@ -20,12 +16,12 @@ const TopNavbar = ({ isMobile, toggleSidebar }) => {
               height="50"
               className="d-inline-block align-top"
               alt="Logo Francsy"
-            />          </Navbar.Brand>
+            />
+          </Navbar.Brand>
         </Container>
       </Navbar>
-    </header>
+    </header >
   );
 };
 
 export default TopNavbar;
-
