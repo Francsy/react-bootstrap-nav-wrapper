@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import SideNavbar from "./SideNavbar";
+import Home from "./home";
 
-describe("SideNavbar", () => {
+describe("Home", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<SideNavbar />);
+    const wrapper = shallow(<Home />);
     expect(wrapper).toMatchSnapshot();
   });
 });

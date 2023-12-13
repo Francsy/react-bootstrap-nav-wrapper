@@ -1,7 +1,6 @@
 import React from "react";
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-import "./SideNavbar.css";
 
 const SideNavbar = ({ isOpen }) => {
   return (

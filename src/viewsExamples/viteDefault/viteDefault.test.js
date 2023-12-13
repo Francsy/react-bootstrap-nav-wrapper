@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import TopNavbar from "./TopNavbar";
+import ViteDefault from "./viteDefault";
 
-describe("TopNavbar", () => {
+describe("ViteDefault", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<TopNavbar />);
+    const wrapper = shallow(<ViteDefault />);
     expect(wrapper).toMatchSnapshot();
   });
 });

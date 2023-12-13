@@ -1,7 +1,6 @@
 import React from "react";
-import { Navbar, Button, Container } from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
 
-import './TopNavbar.css';
 
 const TopNavbar = ({ isMobile, toggleSidebar }) => {
   return (
@@ -12,8 +11,8 @@ const TopNavbar = ({ isMobile, toggleSidebar }) => {
           <Navbar.Brand href="#home">
             <img
               src="https://www.francsy.dev/assets/logo-4e70be36.svg"
-              width="50"
-              height="50"
+              width="60"
+              height="60"
               className="d-inline-block align-top"
               alt="Logo Francsy"
             />
