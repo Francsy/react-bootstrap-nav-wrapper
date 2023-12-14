@@ -1,18 +1,21 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import NavWrapper from './components/NavWrapper';
-import Home from './viewsExamples/Home';
+import { Home, ViteDefault } from './viewsExamples';
+
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <NavWrapper>
-        <Home/>
-      </NavWrapper>
+     <Routes>
+      <Route path="/" element={<NavWrapper />}>
+        <Route index element={<Home />} />
+        <Route path="vite" element={<ViteDefault />} />
+      </Route>
+    </Routes>
     </>
   )
 }
