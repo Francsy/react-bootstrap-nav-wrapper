@@ -20,7 +20,12 @@ const SideNavbar = React.forwardRef(({ isOpen }, ref) => {
                     <span>&nbsp;{item.label}</span>
                   </Link>
                 ) : (
-                  <NavDropdown key={index} title={item.label} id="basic-nav-dropdown">
+                  <NavDropdown key={index} title={
+                    <>
+                    <FontAwesomeIcon icon={item.icon} className="menu-icon" />
+                    <span>&nbsp;{item.label}</span>
+                    </>
+                  } id="basic-nav-dropdown">
                     {item.items.map((dropdownItem, dropdownIndex) => (
                       <React.Fragment key={dropdownIndex}>
                         {dropdownItem.divider ? <NavDropdown.Divider /> : <></>}

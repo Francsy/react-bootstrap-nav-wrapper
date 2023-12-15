@@ -16,11 +16,19 @@
   width: 300px;
   overflow-y: auto;
   font-size: 1.4rem;
-  transition: transform 0.3s ease-out; 
+  transition: transform 0.3s ease-out;
 }
 
+.navbar-nav {
+  margin-left: 5%;
+} 
+
 .side-menu .menu-icon {
-  width: 24px;
+  width: 32px;
+}
+
+.dropdown-item {
+  font-size: 1.2rem;
 }
 
 .nav-link{

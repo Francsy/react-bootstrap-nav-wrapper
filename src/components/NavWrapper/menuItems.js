@@ -1,4 +1,4 @@
-import { faGauge, faNetworkWired, faFileContract, faArrowUpRightFromSquare, faFileArrowDown, faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { faGauge, faNetworkWired, faFileContract, faArrowUpRightFromSquare, faFileArrowDown, faListCheck, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 export const menuItems = [
     {
@@ -22,6 +22,7 @@ export const menuItems = [
     {
         label: 'Dropdown',
         type: 'dropdown',
+        icon: faCircleInfo,
         items: [
             {
                 label: 'Action 1',
