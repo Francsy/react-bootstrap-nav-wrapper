@@ -1,10 +1,50 @@
 import React from "react";
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGauge, faNetworkWired, faFileContract, faArrowUpRightFromSquare, faFileArrowDown, faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { menuItems } from "./menuItems";
+// import { faGauge, faNetworkWired, faFileContract, faArrowUpRightFromSquare, faFileArrowDown, faListCheck } from "@fortawesome/free-solid-svg-icons";
+
 
 const SideNavbar = React.forwardRef(({ isOpen }, ref) => {
+  return (
+    <aside className={`${isOpen ? "show" : "hide"} `}>
+      <Navbar bg="light" expand="lg" className="side-menu d-flex  align-items-start" ref={ref} >
+        <Nav className="p-3 flex-column">
+          {
+            menuItems.map((item, index) => (
+              <React.Fragment key={index}>
+                {item.type === "link" ? (
+                  <Link key={index} to={item.path} className="nav-link">
+                    <FontAwesomeIcon icon={item.icon} className="menu-icon" />
+                    <span>&nbsp;{item.label}</span>
+                  </Link>
+                ) : (
+                  <NavDropdown key={index} title={item.label} id="basic-nav-dropdown">
+                    {item.items.map((dropdownItem, dropdownIndex) => (
+                      <React.Fragment key={dropdownIndex}>
+                        {dropdownItem.divider ? <NavDropdown.Divider /> : <></>}
+                        <Link key={dropdownIndex} to={dropdownItem.path} className="dropdown-item">
+                          <FontAwesomeIcon icon={dropdownItem.icon} className="menu-icon" />
+                          <span>&nbsp;{dropdownItem.label}</span>
+                        </Link>
+                      </React.Fragment>
+                    ))}
+                  </NavDropdown>
+                )}
+              </React.Fragment>
+            ))
+          }
+        </Nav>
+      </Navbar>
+    </aside>
+  );
+});
+
+export default SideNavbar;
+
+
+/* const SideNavbar = React.forwardRef(({ isOpen }, ref) => {
   return (
     <aside className={`${isOpen ? "show" : "hide"} `}>
       <Navbar bg="light" expand="lg" className="side-menu d-flex  align-items-start" ref={ref} >
@@ -38,8 +78,7 @@ const SideNavbar = React.forwardRef(({ isOpen }, ref) => {
 });
 
 export default SideNavbar;
-
-
+ */
 
 /* Version without react-router-dom:
 const SideNavbar = ({ isOpen }) => {
