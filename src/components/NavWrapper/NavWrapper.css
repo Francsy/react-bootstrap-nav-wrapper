@@ -21,6 +21,16 @@
   transition: transform 0.3s ease-out; 
 }
 
+.side-menu .menu-icon {
+  width: 24px;
+}
+
+/* Use this class to give styles to all content inside NavWrapper
+.content { 
+  
+}
+ */
+
 .show {
   transform: translateX(0); 
   transition: transform 0.3s ease-out; 

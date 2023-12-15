@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import TopNavbar from "./TopNavbar";
 import SideNavbar from "./SideNavbar";
 
 import './NavWrapper.css';
 
-const SidebarWrapper = ({ children }) => {
+const SidebarWrapper = (/* { children } */) => { // We will use Outlet (react-router-dom) instead of children
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [topMenuHeight, setTopMenuHeight] = useState(0);
@@ -57,7 +58,10 @@ const SidebarWrapper = ({ children }) => {
         marginTop: `${topMenuHeight}px`,
         marginLeft: isMobile ? '0px' : `${sideMenuWidth}px`,
       }}>
-        {children}
+        {/* Changed for Outlet (react-router-dom)
+        {children}  
+        */}
+        <Outlet /> 
       </div>
     </div>
   );

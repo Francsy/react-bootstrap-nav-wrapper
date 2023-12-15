@@ -10,7 +10,7 @@ const TopNavbar = ({ isMobile, toggleSidebar }) => {
           {isMobile && <Navbar.Toggle onClick={toggleSidebar} />}
           <Navbar.Brand href="#home">
             <img
-              src="https://www.francsy.dev/assets/logo-4e70be36.svg"
+              src="/logo.svg"
               width="60"
               height="60"
               className="d-inline-block align-top"
