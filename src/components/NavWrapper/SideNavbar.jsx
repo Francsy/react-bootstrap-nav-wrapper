@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGauge, faNetworkWired, faFileContract, faArrowUpRightFromSquare, faFileArrowDown, faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const SideNavbar = ({ isOpen }) => {
+const SideNavbar = React.forwardRef(({ isOpen }, ref) => {
   return (
     <aside className={`${isOpen ? "show" : "hide"} `}>
-      <Navbar bg="light" expand="lg" className="side-menu d-flex  align-items-start"  >
+      <Navbar bg="light" expand="lg" className="side-menu d-flex  align-items-start" ref={ref} >
         <Nav className="p-3 flex-column">
           <Link to="/" className="nav-link">
             <FontAwesomeIcon icon={faGauge} className="menu-icon" /><span>&nbsp;Home</span>
@@ -15,18 +15,18 @@ const SideNavbar = ({ isOpen }) => {
           <Link to="/vite" className="nav-link">
             <FontAwesomeIcon icon={faNetworkWired} className="menu-icon" /><span>&nbsp;Vite</span>
           </Link>
-          <Link to="/" className="nav-link">
+          <Link to="/example" className="nav-link">
             <FontAwesomeIcon icon={faFileContract} className="menu-icon" /><span>&nbsp;Example</span>
           </Link>
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <Link to="/" className="dropdown-item">
+            <Link to="/" className="dropdown-item link">
               <FontAwesomeIcon icon={faListCheck} className="menu-icon" /><span>&nbsp;Action 1</span>
             </Link>
-            <Link to="/vite" className="dropdown-item">
+            <Link to="/vite" className="dropdown-item link">
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="menu-icon" /><span>&nbsp;Action 2</span>
             </Link>
-            <div className="dropdown-divider"></div>
-            <Link to="/" className="dropdown-item">
+            <NavDropdown.Divider />
+            <Link to="/example" className="dropdown-item link">
               <FontAwesomeIcon icon={faFileArrowDown} className="menu-icon" /><span>&nbsp;Other Action</span>
             </Link>
           </NavDropdown>
@@ -35,7 +35,7 @@ const SideNavbar = ({ isOpen }) => {
       </Navbar>
     </aside>
   );
-};
+});
 
 export default SideNavbar;
 

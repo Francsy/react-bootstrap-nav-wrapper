@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import TopNavbar from "./TopNavbar";
 import SideNavbar from "./SideNavbar";
@@ -10,6 +10,10 @@ const SidebarWrapper = (/* { children } */) => { // We will use Outlet (react-ro
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [topMenuHeight, setTopMenuHeight] = useState(0);
   const [sideMenuWidth, setSideMenuWidth] = useState(0);
+
+  const topMenuRef = useRef(null);
+  const sideMenuRef = useRef(null);
+
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -31,12 +35,9 @@ const SidebarWrapper = (/* { children } */) => { // We will use Outlet (react-ro
   }, []);
 
   useEffect(() => {
-    const topMenu = document.querySelector('.top-menu');
-    const sideMenu = document.querySelector('.side-menu');
-
-    if (topMenu && sideMenu) {
-      const topMenuHeight = topMenu.clientHeight;
-      const sideMenuWidth = sideMenu.clientWidth;
+    if (topMenuRef.current && sideMenuRef.current) {
+      const topMenuHeight = topMenuRef.current.clientHeight;
+      const sideMenuWidth = sideMenuRef.current.clientWidth;
 
       setTopMenuHeight(topMenuHeight);
       setSideMenuWidth(sideMenuWidth);
@@ -51,8 +52,8 @@ const SidebarWrapper = (/* { children } */) => { // We will use Outlet (react-ro
   return (
     <div>
       <div className='position-fixed parent-menu'>
-        <TopNavbar isMobile={isMobile} toggleSidebar={toggleSidebar} />
-        <SideNavbar isOpen={sidebarOpen} />
+        <TopNavbar ref={topMenuRef} isMobile={isMobile} toggleSidebar={toggleSidebar} />
+        <SideNavbar ref={sideMenuRef} isOpen={sidebarOpen} />
       </div>
       <div className="p-4 content" style={{
         marginTop: `${topMenuHeight}px`,
