@@ -25,25 +25,30 @@ const SidebarWrapper = (/* { children } */) => { // We will use Outlet (react-ro
         setSidebarOpen(true);
       }
     };
-
+  
     handleMediaQueryChange(mediaQuery);
     mediaQuery.addEventListener('change', handleMediaQueryChange);
-
+  
+    const handleResize = () => {
+      if (topMenuRef.current && sideMenuRef.current) {
+        const topMenuHeight = topMenuRef.current.clientHeight;
+        const sideMenuWidth = sideMenuRef.current.clientWidth;
+  
+        setTopMenuHeight(topMenuHeight);
+        setSideMenuWidth(sideMenuWidth);
+      }
+    };
+  
+    handleResize(); // Obtener las dimensiones al inicio
+  
+    window.addEventListener('resize', handleResize);
+  
     return () => {
       mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      window.removeEventListener('resize', handleResize);
     };
-  }, []);
-
-  useEffect(() => {
-    if (topMenuRef.current && sideMenuRef.current) {
-      const topMenuHeight = topMenuRef.current.clientHeight;
-      const sideMenuWidth = sideMenuRef.current.clientWidth;
-
-      setTopMenuHeight(topMenuHeight);
-      setSideMenuWidth(sideMenuWidth);
-    }
-  }, []);
-
+  }, [topMenuRef, sideMenuRef]); // Dependencias para el efecto combinado
+  
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
