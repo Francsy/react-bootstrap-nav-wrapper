@@ -11,6 +11,11 @@
 
 }
 
+.toggle-button {
+  margin-left: 15px;
+}
+
+
 .side-menu {
   height: 90vh;
   width: 300px;
@@ -50,4 +55,11 @@
 .hide {
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
+}
+
+
+@media (min-width: 769px) {
+  .top-logo {
+    margin-left: 50%;
+  }  
 }
