@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import NavWrapper from './components/NavWrapper';
 import { Example, Home, ViteDefault } from './viewsExamples';
-
 import './App.css';
+
 
 function App() {
 

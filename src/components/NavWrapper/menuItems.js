@@ -14,13 +14,13 @@ export const menuItems = [
         type: 'link',
     },
     {
-        label: 'Example',
+        label:'Example',
         path: '/example',
         icon: faFileContract,
         type: 'link',
     },
     {
-        label: 'Dropdown',
+        label: 'More',
         type: 'dropdown',
         icon: faCircleInfo,
         items: [
