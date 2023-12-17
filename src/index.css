@@ -1,0 +1,15 @@
+/* Use this file to override Bootstrap styles. */
+
+:root {
+    --top-menu-main: #F7FAFC;
+    --side-menu-main: #F7FAFC;
+}
+
+.top-menu {
+    background-color: var(--top-menu-main) !important;
+
+}
+
+.side-menu  {
+    background-color: var(--side-menu-main) !important;
+}

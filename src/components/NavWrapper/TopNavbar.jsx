@@ -2,18 +2,18 @@ import React from "react";
 import { Navbar, Container } from 'react-bootstrap';
 
 
-const TopNavbar = ({ isMobile, toggleSidebar }) => {
+const TopNavbar = React.forwardRef(({ isMobile, toggleSidebar }, ref) => {
   return (
     <header className="fixed-top">
-      <Navbar expand="lg" className="bg-body-tertiary top-menu" >
+      <Navbar bg="primary" expand="lg" className="bg-body-tertiary top-menu" ref={ref}>
         <Container fluid>
-          {isMobile && <Navbar.Toggle onClick={toggleSidebar} />}
+          {isMobile && <Navbar.Toggle onClick={toggleSidebar} className="toggle-button" />}
           <Navbar.Brand href="#home">
             <img
               src="/logo.svg"
               width="60"
               height="60"
-              className="d-inline-block align-top"
+              className="d-inline-block align-top top-logo"
               alt="Logo Francsy"
             />
           </Navbar.Brand>
@@ -21,6 +21,6 @@ const TopNavbar = ({ isMobile, toggleSidebar }) => {
       </Navbar>
     </header >
   );
-};
+});
 
 export default TopNavbar;
